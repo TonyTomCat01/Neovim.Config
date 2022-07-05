@@ -8,6 +8,8 @@ vim.g.maplocalleader = " "
 
 return function()
     Keymap("n", "<leader>ff", ":Telescope find_files<CR>")
+    Keymap("n", "<leader>fm", ":Telescope man_pages<CR>")
+    Keymap("n", "<leader>fb", ":Telescope buffers<CR>")
 
     Keymap("n", "<leader>;", "<C-w>w")
 
