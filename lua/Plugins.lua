@@ -21,6 +21,7 @@ return function()
 
             -- Aesthetics
             use "kyazdani42/nvim-web-devicons"
+            use "romgrk/barbar.nvim"
 
             use "rebelot/heirline.nvim"
             use {

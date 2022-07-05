@@ -1,7 +1,5 @@
-Opts = {noremap = true, silent = true}
-
 Keymap = function(a, b, c)
-    vim.api.nvim_set_keymap(a, b, c, Opts)
+    vim.api.nvim_set_keymap(a, b, c, {noremap = true, silent = true})
 end
 
 Keymap("", "<Space>", "<Nop>")
@@ -20,4 +18,6 @@ return function()
 
     Keymap("n", "<leader>r", ":!./run<CR>")
     Keymap("n", "<A-f>", ":NvimTreeToggle")
+
+    Keymap("n", "<A-Tab>", ":TabNext")
 end
