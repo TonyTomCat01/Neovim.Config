@@ -1,5 +1,9 @@
 local p, heirline = pcall(require, "heirline")
 
+if not p then
+    return
+end
+
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
@@ -274,8 +278,6 @@ local StatusLines = {
     statusline
 }
 
-return function ()
+return function()
     heirline.setup(StatusLines)
 end
-
-

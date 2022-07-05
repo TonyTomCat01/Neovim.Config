@@ -16,14 +16,11 @@ return function()
             use "numToStr/Comment.nvim"
             use {
                 "nvim-telescope/telescope.nvim",
-                opt = true,
-                requires = {"nvim-lua/plenary.nvim", opt = true},
-                cmd = {"Telescope"}
+                requires = {"nvim-lua/plenary.nvim"},
             }
 
             -- Aesthetics
             use "kyazdani42/nvim-web-devicons"
-            use "glepnir/dashboard-nvim"
 
             use "rebelot/heirline.nvim"
             use {

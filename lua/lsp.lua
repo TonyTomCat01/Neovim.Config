@@ -1,45 +1,29 @@
-local lspconfig = require "lspconfig"
+return function()
+    local lspconfig = require "lspconfig"
 
-lspconfig.clangd.setup {}
-
-lspconfig.cssls.setup {}
-
-lspconfig.tsserver.setup {}
-
-lspconfig.emmet_ls.setup {}
-
-lspconfig.pyright.setup {}
-
-lspconfig.sumneko_lua.setup {}
-
-lspconfig.purescriptls.setup{}
-
-lspconfig.hls.setup {}
-
-vim.diagnostic.config(
-    {
-        virtual_text = false
+    local servers = {
+        "cssls",
+        "pyright",
+        "emmet_ls",
+        "sumneko_lua",
+        "hls",
+        "clangd",
+        "tsserver"
     }
-)
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+    vim.diagnostic.config(
+        {
+            virtual_text = false
+        }
+    )
 
-local servers = {
-    "cssls",
-    "pyright",
-    "emmet_ls",
-    "sumneko_lua",
-    "clangd",
-    "tsserver"
-}
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        -- on_attach = my_custom_on_attach,
-        capabilities = capabilities
-    }
-end
-
-return function ()
+    for _, lsp in ipairs(servers) do
+        lspconfig[lsp].setup {
+            -- on_attach = my_custom_on_attach,
+            capabilities = capabilities
+        }
+    end
 end
