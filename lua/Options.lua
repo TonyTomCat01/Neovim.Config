@@ -74,6 +74,15 @@ local function autocmds()
             end
         }
     )
+
+    autocmd(
+        {"CursorHold", "CursorHoldI"},
+        {
+            callback = function()
+                vim.diagnostic.open_float(nil, {focus = false})
+            end
+        }
+    )
 end
 
 return function()

@@ -16,13 +16,13 @@ return function()
             use "numToStr/Comment.nvim"
             use {
                 "nvim-telescope/telescope.nvim",
-                requires = {"nvim-lua/plenary.nvim"},
+                requires = {"nvim-lua/plenary.nvim"}
             }
 
             -- Aesthetics
             use "kyazdani42/nvim-web-devicons"
+            use "kyazdani42/nvim-tree.lua"
             use "romgrk/barbar.nvim"
-
             use "rebelot/heirline.nvim"
             use {
                 "norcalli/nvim-colorizer.lua",

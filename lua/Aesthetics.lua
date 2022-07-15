@@ -9,7 +9,8 @@ Onedark.setup(
         theme = "onedark",
         colors = {}, -- Override default colors by specifying colors for 'onelight' or 'onedark' themes
         hlgroups = {
-            WinSeparator = {fg = "#1e222a"}
+            WinSeparator = {fg = "#1e222a"},
+            VertSplit = {fg = "#1e222a"}
         },
         filetype_hlgroups = {}, -- Override default highlight groups for specific filetypes
         plugins = {
@@ -110,9 +111,6 @@ Indentsetup = {
         "packer",
         "lspinfo",
         "help"
-    },
-    filetype_exclude = {
-        "dashboard"
     }
 }
 
@@ -120,10 +118,62 @@ _, Autopairs = pcall(require, "nvim-autopairs")
 
 _, Comment = pcall(require, "Comment")
 
+NvimTreeSetup = {
+    update_focused_file = {
+        enable = true,
+        update_cwd = true
+    },
+    renderer = {
+        root_folder_modifier = ":t",
+        icons = {
+            glyphs = {
+                default = "",
+                symlink = "",
+                folder = {
+                    arrow_open = "",
+                    arrow_closed = "",
+                    default = "",
+                    open = "",
+                    empty = "",
+                    empty_open = "",
+                    symlink = "",
+                    symlink_open = ""
+                },
+                git = {
+                    unstaged = "",
+                    staged = "S",
+                    unmerged = "",
+                    renamed = "➜",
+                    untracked = "U",
+                    deleted = "",
+                    ignored = "◌"
+                }
+            }
+        }
+    },
+    diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+        icons = {
+            hint = "",
+            info = "",
+            warning = " ",
+            error = ""
+        }
+    },
+    view = {
+        width = 30,
+        height = 30,
+        side = "left",
+        mappings = {}
+    }
+}
+
 return function()
     Onedark.load()
     Todo.setup(Todosetup)
     Indent.setup(Indentsetup)
     Autopairs.setup {}
     Comment.setup()
+    require("nvim-tree").setup(NvimTreeSetup)
 end

@@ -7,23 +7,24 @@ return function()
         "emmet_ls",
         "sumneko_lua",
         "hls",
+        "rust_analyzer",
         "clangd",
         "tsserver"
     }
 
     vim.diagnostic.config(
         {
-            virtual_text = false
+            virtual_text = false,
+            update_in_insert = true,
+            underline = true,
+            severity_sort = true
         }
     )
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+    -- local caps = vim.lsp.protocol.make_client_capabilities()
+    -- caps = require("cmp_nvim_lsp").update_capabilities(caps)
 
     for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup {
-            -- on_attach = my_custom_on_attach,
-            capabilities = capabilities
-        }
+        lspconfig[lsp].setup {}
     end
 end
